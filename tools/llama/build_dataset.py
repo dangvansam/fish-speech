@@ -126,15 +126,12 @@ def run_task(task):
 )
 def main(input, output, num_workers, text_extension, shard_size):
     generator_fns = []
-
     for f in input:
         assert f.exists(), f"{f} not found"
-
         if f.is_dir():
             generator_fn = task_generator_folder(f, text_extension)
         else:
             generator_fn = task_generator_filelist(f)
-
         generator_fns.append(generator_fn)
 
     generator_fn = itertools.chain(*generator_fns)

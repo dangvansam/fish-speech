@@ -398,8 +398,8 @@ def generate_long(
     temperature: float = 0.7,
     compile: bool = False,
     iterative_prompt: bool = True,
-    max_length: int = 2048,
-    chunk_length: int = 150,
+    max_length: int = 1000,
+    chunk_length: int = 200,
     prompt_text: Optional[str | list[str]] = None,
     prompt_tokens: Optional[torch.Tensor | list[torch.Tensor]] = None,
 ):

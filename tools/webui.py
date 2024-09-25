@@ -276,42 +276,42 @@ def build_app():
                     with gr.Tab(label=i18n("Advanced Config")):
                         chunk_length = gr.Slider(
                             label=i18n("Iterative Prompt Length, 0 means off"),
-                            minimum=50,
+                            minimum=0,
                             maximum=300,
-                            value=200,
-                            step=8,
+                            value=105,
+                            step=5,
                         )
 
                         max_new_tokens = gr.Slider(
                             label=i18n("Maximum tokens per batch, 0 means no limit"),
                             minimum=0,
                             maximum=2048,
-                            value=0,  # 0 means no limit
+                            value=256,  # 0 means no limit
                             step=8,
                         )
 
                         top_p = gr.Slider(
                             label="Top-P",
-                            minimum=0.6,
-                            maximum=0.9,
+                            minimum=0.1,
+                            maximum=1.0,
                             value=0.7,
-                            step=0.01,
+                            step=0.05,
                         )
 
                         repetition_penalty = gr.Slider(
                             label=i18n("Repetition Penalty"),
                             minimum=1,
                             maximum=1.5,
-                            value=1.2,
+                            value=1.5,
                             step=0.01,
                         )
 
                         temperature = gr.Slider(
                             label="Temperature",
-                            minimum=0.6,
-                            maximum=0.9,
-                            value=0.7,
-                            step=0.01,
+                            minimum=0.1,
+                            maximum=1.0,
+                            value=0.9,
+                            step=0.05,
                         )
 
                     with gr.Tab(label=i18n("Reference Audio")):
@@ -371,6 +371,7 @@ def build_app():
                             label=i18n("Generated Audio"),
                             type="numpy",
                             interactive=False,
+                            autoplay=True,
                             visible=True if _ == 0 else False,
                         )
                         global_audio_list.append(audio)
@@ -472,7 +473,7 @@ def parse_args():
     parser.add_argument("--half", action="store_true")
     parser.add_argument("--compile", action="store_true")
     parser.add_argument("--max-gradio-length", type=int, default=0)
-    parser.add_argument("--theme", type=str, default="light")
+    parser.add_argument("--theme", type=str, default="dark")
 
     return parser.parse_args()
 
@@ -505,7 +506,7 @@ if __name__ == "__main__":
             enable_reference_audio=False,
             reference_audio=None,
             reference_text="",
-            max_new_tokens=0,
+            max_new_tokens=512,
             chunk_length=200,
             top_p=0.7,
             repetition_penalty=1.2,
@@ -516,4 +517,4 @@ if __name__ == "__main__":
     logger.info("Warming up done, launching the web UI...")
 
     app = build_app()
-    app.launch(show_api=True)
+    app.launch(show_api=False)

@@ -85,6 +85,7 @@ def load_filelist(path: Path | str) -> list[tuple[Path, str, str, str]]:
         "zh": ["zh", "en"],
         "jp": ["jp", "en"],
         "en": ["en"],
+        "vi": ["vi", "en"]
     }
 
     with open(path, "r", encoding="utf-8") as f:
@@ -101,7 +102,7 @@ def load_filelist(path: Path | str) -> list[tuple[Path, str, str, str]]:
             if language == "ja":
                 language = "jp"
 
-            assert language in ["zh", "jp", "en"], f"Invalid language {language}"
+            assert language in ["zh", "jp", "en", "vi"], f"Invalid language {language}"
             languages = LANGUAGE_TO_LANGUAGES[language]
 
             if file in files:

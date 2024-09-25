@@ -129,13 +129,10 @@ def process_batch(files: list[Path], model) -> float:
 
 @click.command()
 @click.argument("folder")
-@click.option("--num-workers", default=1)
+@click.option("--num-workers", default=4)
 @click.option("--config-name", default="firefly_gan_vq")
-@click.option(
-    "--checkpoint-path",
-    default="checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth",
-)
-@click.option("--batch-size", default=64)
+@click.option("--checkpoint-path", default="checkpoints/fish-speech-1.4/firefly-gan-vq-fsq-8x1024-21hz-generator.pth")
+@click.option("--batch-size", default=16)
 @click.option("--filelist", default=None, type=Path)
 def main(
     folder: str,
