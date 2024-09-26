@@ -278,7 +278,7 @@ def build_app():
                             label=i18n("Iterative Prompt Length, 0 means off"),
                             minimum=0,
                             maximum=300,
-                            value=105,
+                            value=0,
                             step=5,
                         )
 
@@ -286,7 +286,7 @@ def build_app():
                             label=i18n("Maximum tokens per batch, 0 means no limit"),
                             minimum=0,
                             maximum=2048,
-                            value=256,  # 0 means no limit
+                            value=1024,  # 0 means no limit
                             step=8,
                         )
 
@@ -302,7 +302,7 @@ def build_app():
                             label=i18n("Repetition Penalty"),
                             minimum=1,
                             maximum=1.5,
-                            value=1.5,
+                            value=1.2,
                             step=0.01,
                         )
 

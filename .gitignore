@@ -3,7 +3,6 @@
 .pdm-python
 /fish_speech.egg-info
 __pycache__
-/results
 /data
 /*.test.sh
 *.filelist
@@ -16,7 +15,7 @@ filelists
 /*.wav
 /*.mp3
 /*.lab
-/results
+/results*
 /data
 /.idea
 ffmpeg.exe
